@@ -52,16 +52,6 @@ Pulsa la campana y concede permiso cuando el navegador lo solicite. CampusFeed m
 
 La entrega depende del permiso del navegador y de que Windows no bloquee las notificaciones. El modo **No molestar** puede ocultarlas.
 
-## Publicación en GitHub Pages
-
-1. Sube el contenido de este proyecto a la rama de GitHub que usarás para publicar.
-2. En el repositorio abre **Settings → Pages**.
-3. Selecciona la rama y la carpeta raíz como origen; guarda los cambios.
-4. Abre la dirección que muestra Pages y espera a que cargue la primera vez con conexión.
-5. Prueba allí la instalación, los permisos de notificación y el modo offline.
-
-El manifest, el service worker y los recursos usan rutas relativas para que también funcionen en una dirección de proyecto como `https://usuario.github.io/nombre-repo/`. `.nojekyll` conserva la publicación estática sin procesamiento adicional.
-
 ## Estructura del proyecto
 
 ```text
@@ -73,7 +63,6 @@ El manifest, el service worker y los recursos usan rutas relativas para que tamb
 ├── config.js                # Configuración pública del frontend
 ├── manifest.webmanifest    # Nombre, alcance e iconos instalables
 ├── PROPUESTA.md            # Descripción de la propuesta del producto
-├── IMAGENES.md             # Mapa de avatares e iconos
 └── img/
     ├── avatars/            # Avatares JPG de las áreas
     └── icons/              # Icono original y tamaños para la PWA
