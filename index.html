@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#164b43" />
+    <meta
+      name="description"
+      content="Avisos de tu comunidad universitaria, también sin conexión."
+    />
+    <title>CampusFeed · Tu campus, al día</title>
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <script src="./config.js" defer></script>
+    <link rel="icon" href="./img/icons/icon-192.jpg" />
+    <link rel="apple-touch-icon" href="./img/icons/icon-192.jpg" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./"
+        ><img
+          class="brand-icon"
+          src="./img/icons/icono.jpg"
+          alt=""
+          width="41"
+          height="41"
+        />CampusFeed</a
+      >
+      <div class="top-actions">
+        <span
+          id="connection"
+          class="status"
+          role="img"
+          aria-label="Conectado"
+          title="Conectado"
+          ><svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M2 8a16 16 0 0 1 20 0M5 12a11 11 0 0 1 14 0M8.5 16a5.5 5.5 0 0 1 7 0"
+            />
+            <circle cx="12" cy="20" r="1" />
+            <path class="wifi-slash" d="M3 3l18 18" /></svg></span
+        ><button id="install" hidden>Instalar app</button
+        ><button
+          id="notifications"
+          class="icon-button"
+          aria-label="Activar y probar notificaciones"
+          title="Activar y probar notificaciones"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4" />
+          </svg>
+        </button>
+      </div>
+    </header>
+    <div class="layout">
+      <aside class="sidebar">
+        <p class="eyebrow">TU COMUNIDAD</p>
+        <h2>Un campus.<br />Muchas historias.</h2>
+        <nav aria-label="Filtrar avisos">
+          <button class="nav active" data-filter="Todos">
+            ▦ <span>Todos los avisos</span></button
+          ><button class="nav" data-filter="Académico">
+            ▤ <span>Académico</span></button
+          ><button class="nav" data-filter="Eventos">
+            ✧ <span>Eventos</span></button
+          ><button class="nav" data-filter="Deportes">
+            ◎ <span>Deportes</span></button
+          ><button class="nav" data-filter="Servicios">
+            ☷ <span>Servicios</span></button
+          ><button class="nav" data-filter="Guardados">
+            ♡ <span>Guardados</span>
+          </button>
+        </nav>
+        <div class="offline-card">
+          <span>↳</span><strong>También contigo sin red</strong>
+          <p>Tus avisos y borradores se quedan en este dispositivo.</p>
+        </div>
+        <p class="sidebar-footer">HECHO PARA LA VIDA UNIVERSITARIA</p>
+      </aside>
+      <main>
+        <section class="hero">
+          <div>
+            <p class="eyebrow">EL PUNTO DE ENCUENTRO DEL CAMPUS</p>
+            <h1>Tu campus,<br /><em>al día.</em></h1>
+            <p>
+              Entérate, comparte y conecta.<br />Lo que pasa aquí, empieza
+              contigo.
+            </p>
+            <button id="compose" class="primary">＋ Publicar un aviso</button>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="art-sun"></div>
+            <div class="art-building">
+              <span>UNIVERSIDAD</span>
+              <div class="windows">▪ ▪ ▪<br />▪ ▪ ▪</div>
+              <div class="door"></div>
+            </div>
+            <div class="art-tree"></div>
+            <div class="art-note">
+              <svg
+                class="idea-icon"
+                viewBox="0 0 48 48"
+                role="img"
+                aria-label="Foco"
+              >
+                <path
+                  d="M17 30c-1.5-1.7-4-4.2-4-9a11 11 0 1 1 22 0c0 4.8-2.5 7.3-4 9-1 1.1-1.5 2.1-1.5 4h-11c0-1.9-.5-2.9-1.5-4Z"
+                />
+                <path d="M19 38h10M21 42h6M24 1v4M5 9l4 3M43 9l-4 3" /></svg
+              ><strong>Ideas que<br />nos conectan.</strong>
+            </div>
+            <div class="art-ground"></div>
+          </div>
+        </section>
+        <div class="feed-heading">
+          <div>
+            <p class="eyebrow">NO TE PIERDAS NADA</p>
+            <h2 id="feed-title">En el campus</h2>
+          </div>
+          <span id="count"></span>
+        </div>
+        <label class="search"
+          ><span>⌕</span
+          ><input
+            id="search"
+            type="search"
+            placeholder="Buscar un aviso…"
+            aria-label="Buscar avisos"
+        /></label>
+        <div id="feed" class="feed" aria-live="polite"></div>
+      </main>
+      <aside class="rightbar">
+        <section class="week-card">
+          <p class="eyebrow">PEQUEÑAS ACCIONES</p>
+          <h3>Haz comunidad.</h3>
+          <p>
+            Comparte una oportunidad, una buena noticia o ese evento que nadie
+            debería perderse.
+          </p>
+          <span class="big-star">✳</span>
+        </section>
+        <section class="tip-card">
+          <h3>Tu espacio, siempre a mano</h3>
+          <p>
+            Instala CampusFeed y consulta los avisos guardados incluso sin
+            internet.
+          </p>
+          <span class="mini-label">PWA · DISPONIBLE OFFLINE</span>
+        </section>
+      </aside>
+    </div>
+    <dialog id="editor">
+      <form id="post-form">
+        <div class="dialog-heading">
+          <div>
+            <p class="eyebrow">PUBLICACIÓN DEL REPRESENTANTE DEL ÁREA</p>
+            <h2>Nuevo aviso</h2>
+          </div>
+          <button type="button" id="close-editor" aria-label="Cerrar">✕</button>
+        </div>
+        <label for="post-title">Título</label
+        ><input
+          id="post-title"
+          maxlength="100"
+          required
+          placeholder="¿Qué está pasando en el campus?"
+        /><label for="category">Área responsable</label
+        ><select id="category">
+          <option>Académico</option>
+          <option>Eventos</option>
+          <option>Deportes</option>
+          <option>Servicios</option>
+        </select>
+        <p class="muted">
+          El aviso se mostrará a nombre del área seleccionada.
+        </p>
+        <label for="post-body">Aviso</label
+        ><textarea
+          id="post-body"
+          maxlength="1200"
+          rows="5"
+          required
+          placeholder="Escribe los detalles para la comunidad…"
+        ></textarea>
+        <p id="draft-status" class="muted">
+          Tu borrador se guarda automáticamente.
+        </p>
+        <div class="dialog-actions">
+          <button type="button" id="discard">Descartar borrador</button
+          ><button class="primary" type="submit">Publicar aviso ↗</button>
+        </div>
+      </form>
+    </dialog>
+    <div id="toast" role="status" hidden></div>
+  </body>
+</html>
